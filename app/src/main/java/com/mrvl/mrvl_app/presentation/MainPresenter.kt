@@ -1,6 +1,5 @@
 package com.mrvl.mrvl_app.presentation
 
-import android.util.Log
 import com.mrvl.mrvl_app.app.AppScreens
 import com.mrvl.mrvl_app.presentation.core.mvp.presenter.BasePresenter
 import ru.terrakok.cicerone.Router
@@ -12,7 +11,6 @@ class MainPresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        Log.d("sfsgdhdhgj","sfsgdhdhgj")
         router.navigateTo(AppScreens.MAIN_SCREEN_KEY)
     }
 

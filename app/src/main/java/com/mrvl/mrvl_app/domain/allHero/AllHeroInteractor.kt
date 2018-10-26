@@ -5,7 +5,7 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 interface AllHeroInteractor {
-    fun getAllHero(): Single<Unit>
+    fun getAllHero(): Single<AllHeroDomain>
 }
 
 class AllHeroDomainInteractor @Inject constructor(
@@ -14,12 +14,13 @@ class AllHeroDomainInteractor @Inject constructor(
 
     private val allHeroesRequest = AllHeroesRequest()
 
-    override fun getAllHero(): Single<Unit> =
+    override fun getAllHero(): Single<AllHeroDomain> =
             allHeroRepository.getAllHero(allHeroesRequest)
+                    .doOnSuccess { allHeroesRequest.turnPage() }
 }
 
 data class AllHeroesRequest(
-        val limit: Int = 30,
+        val limit: Int = 29,
         var offset: Int = 0
 ) {
     fun turnPage() {

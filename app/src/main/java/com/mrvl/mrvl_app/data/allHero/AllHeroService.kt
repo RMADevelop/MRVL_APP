@@ -6,14 +6,14 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 interface AllHeroService {
-    fun getAllHero(allHeroesRequest: AllHeroesRequest): Single<Unit>
+    fun getAllHero(allHeroesRequest: AllHeroesRequest): Single<AllHeroRemote>
 }
 
 class AllHeroDataService @Inject constructor(
         private val api: Api
 ) : AllHeroService {
 
-    override fun getAllHero(allHeroesRequest: AllHeroesRequest): Single<Unit> =
+    override fun getAllHero(allHeroesRequest: AllHeroesRequest): Single<AllHeroRemote> =
             api.loadCharecters(
                     allHeroesRequest.limit,
                     allHeroesRequest.offset

@@ -3,6 +3,7 @@ package com.mrvl.mrvl_app.di
 import android.app.Application
 import android.content.Context
 import com.mrvl.mrvl_app.app.App
+import com.mrvl.mrvl_app.core.di.ExecutorModule
 import com.mrvl.mrvl_app.core.di.NavigationModule
 import com.mrvl.mrvl_app.core.di.NetworkModule
 import dagger.BindsInstance
@@ -15,6 +16,7 @@ import javax.inject.Singleton
 @Component(modules = [
     NetworkModule::class,
     NavigationModule::class,
+    ExecutorModule::class,
     AppModule::class
 ])
 interface AppComponent {
