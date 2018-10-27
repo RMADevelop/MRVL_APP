@@ -22,6 +22,8 @@ interface MainComponent {
 
     fun allHeroComponent(): AllHeroComponent
 
+    fun heroInfoComponent(): HeroInfoComponent
+
     @Subcomponent.Builder
     interface Builder {
 
