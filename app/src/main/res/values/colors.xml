@@ -5,4 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="red">#F11E22</color>
     <color name="redDark">#b30000</color>
+
+    <!--gradient splash-->
+    <color name="gradientRedDark">#7C0C00</color>
+    <color name="gradientRedMedium">#8E0F00</color>
+    <color name="gradientRedLight">#B81300</color>
 </resources>
