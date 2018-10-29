@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -51,6 +50,7 @@ class AllHeroesFragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        heroes_recycler_view.visibility = View.GONE
         setToolbarSettings(ToolbarConfig(
                 title = getString(R.string.all_heroes)
         ))
@@ -62,6 +62,7 @@ class AllHeroesFragment
                 else -> throw IllegalStateException("Unknown list manager ${it.itemId}")
             }
         }
+
         allHeroAdapter = AllHeroAdapter({
             Toast.makeText(activity, "$it", Toast.LENGTH_LONG).show()
         })
@@ -86,36 +87,33 @@ class AllHeroesFragment
                         isLoading = true
                         presenter.loadMore()
                     },
-                    { isLoading }
+                    { isLoading },
+                    {
+                        toolbar.isSelected = it
+                    }
             ))
+            toolbar.isSelected = canScrollVertically(-1)
             addAnimation(R.anim.anim_linear_layout)
         }
     }
 
     private fun changeLayoutManager(layoutManager: String): Boolean {
-        Log.d("dfhjvsdhnvsjkdv", layoutManager)
         when (layoutManager) {
             LINEAR_MANAGER -> {
-//                if (heroes_recycler_view.layoutManager !is LinearLayoutManager) {
-                Log.d("dfhjvsdhnvsjkdv", " linear begin")
-                with(heroes_recycler_view) {
-                    addAnimation(R.anim.anim_linear_layout)
-                    setLayoutManager(linearLayoutManager)
-                    adapter = allHeroAdapter
-                    adapter?.notifyDataSetChanged()
-                }
+//                with(heroes_recycler_view) {
+//                    addAnimation(R.anim.anim_linear_layout)
+//                    setLayoutManager(linearLayoutManager)
+//                    adapter = allHeroAdapter
+//                    adapter?.notifyDataSetChanged()
 //                }
             }
             GRID_MANAGER -> {
-//                if (heroes_recycler_view.layoutManager !is GridLayoutManager) {
-                Log.d("dfhjvsdhnvsjkdv", " grid begin")
                 with(heroes_recycler_view) {
                     addAnimation(R.anim.anim_linear_layout)
                     setLayoutManager(gridLayoutManager)
                     adapter = allHeroAdapter
                     adapter?.notifyDataSetChanged()
                 }
-//                }
             }
             else -> throw IllegalArgumentException("Unknown layout manager")
         }
@@ -130,12 +128,26 @@ class AllHeroesFragment
     }
 
     override fun showHeroes(heroes: List<HeroPresentation>) {
+        hideProgress()
+        showContentIfHiding()
         isLoading = false
         allHeroAdapter.addData(heroes)
     }
 
     override fun loadError() {
         isLoading = false
+    }
+
+    private fun hideProgress() {
+        progress_bar.visibility = View.GONE
+    }
+
+    private fun showContentIfHiding() {
+        with(heroes_recycler_view) {
+            if (visibility == View.GONE) {
+                visibility = View.VISIBLE
+            }
+        }
     }
 }
 
