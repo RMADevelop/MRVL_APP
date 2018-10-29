@@ -110,13 +110,14 @@ class AllHeroesFragment
 //                if (heroes_recycler_view.layoutManager !is GridLayoutManager) {
                 Log.d("dfhjvsdhnvsjkdv", " grid begin")
                 with(heroes_recycler_view) {
+                    addAnimation(R.anim.anim_linear_layout)
                     setLayoutManager(gridLayoutManager)
                     adapter = allHeroAdapter
                     adapter?.notifyDataSetChanged()
                 }
 //                }
             }
-            else -> throw IllegalArgumentException("Unknow layout manager")
+            else -> throw IllegalArgumentException("Unknown layout manager")
         }
         return true
     }
@@ -131,7 +132,6 @@ class AllHeroesFragment
     override fun showHeroes(heroes: List<HeroPresentation>) {
         isLoading = false
         allHeroAdapter.addData(heroes)
-//        allHeroAdapter.setItems(heroes)
     }
 
     override fun loadError() {

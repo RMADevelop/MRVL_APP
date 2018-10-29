@@ -9,7 +9,7 @@ import com.mrvl.mrvl_app.core.presentation.list.DiffAdapter
 
 fun <Adapter, Data> Adapter.setItems(
         newItems: Data,
-        withAnim: Boolean = false
+        withAnim: Boolean = true
 ) where Adapter : RecyclerView.Adapter<*>,
         Adapter : DiffAdapter<Data>,
         Adapter : DataAdapter<Data> {
