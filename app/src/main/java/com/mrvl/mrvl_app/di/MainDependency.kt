@@ -20,6 +20,8 @@ interface MainComponent {
 
     fun inject(mainActivity: MainActivity)
 
+    fun splashComponent(): SplashComponent
+
     fun allHeroComponent(): AllHeroComponent
 
     fun heroInfoComponent(): HeroInfoComponent

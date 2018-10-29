@@ -1,17 +1,20 @@
 package com.mrvl.mrvl_app.presentation
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.mrvl.mrvl_app.R
 import com.mrvl.mrvl_app.core.presentation.view.BaseActivity
 import com.mrvl.mrvl_app.di.ComponentManager
+import com.mrvl.mrvl_app.presentation.component.splash.SplashListener
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), MainView {
+class MainActivity : BaseActivity(), MainView, SplashListener {
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
@@ -56,6 +59,7 @@ class MainActivity : BaseActivity(), MainView {
     }
 
     private fun initBottomNavigation() {
+        bottom_navigation_view.visibility = View.GONE
         bottom_navigation_view.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.all_hero_menu_item -> mainPresenter.goToAllHero()
@@ -63,5 +67,10 @@ class MainActivity : BaseActivity(), MainView {
             }
             true
         }
+    }
+
+    override fun splashShowed() {
+        Log.d("ldsfsd","showed")
+        bottom_navigation_view.visibility = View.VISIBLE
     }
 }

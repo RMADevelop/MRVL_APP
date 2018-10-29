@@ -3,6 +3,14 @@
     android:id="@+id/container_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/animlist_splash_gradient">
+    android:background="@drawable/animlist_splash_gradient"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/logo_image_view"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 
 </LinearLayout>
