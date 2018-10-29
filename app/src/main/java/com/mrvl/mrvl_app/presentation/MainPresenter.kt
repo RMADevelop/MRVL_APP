@@ -11,7 +11,7 @@ class MainPresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
-        router.navigateTo(AppScreens.MAIN_SCREEN_KEY)
+        router.navigateTo(AppScreens.SPLASH_SCREEN)
     }
 
     fun goToAllHero() =

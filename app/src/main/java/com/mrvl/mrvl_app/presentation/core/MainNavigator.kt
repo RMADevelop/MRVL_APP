@@ -13,10 +13,10 @@ import ru.terrakok.cicerone.android.SupportAppNavigator
 import javax.inject.Inject
 
 class MainNavigator @Inject constructor(
-        private val fragmentActivity: FragmentActivity,
-        private val frgamentManager: FragmentManager,
+        fragmentActivity: FragmentActivity,
+        fragmentManager: FragmentManager,
         @IdRes val containerId: Int
-) : SupportAppNavigator(fragmentActivity, frgamentManager, containerId) {
+) : SupportAppNavigator(fragmentActivity, fragmentManager, containerId) {
 
     override fun createActivityIntent(context: Context?, screenKey: String?, data: Any?): Intent? {
         return null

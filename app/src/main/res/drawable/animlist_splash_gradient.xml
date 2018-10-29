@@ -3,9 +3,9 @@
 
     <item
         android:drawable="@drawable/gradiend_red_start"
-        android:duration="3000" />
+        android:duration="500" />
 
     <item
         android:drawable="@drawable/gradient_red_end"
-        android:duration="3000" />
+        android:duration="2000" />
 </animation-list>
