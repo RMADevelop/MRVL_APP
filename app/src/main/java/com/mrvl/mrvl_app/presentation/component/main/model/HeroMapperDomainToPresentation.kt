@@ -14,9 +14,9 @@ class HeroMapperDomainToPresentation @Inject constructor() : Mapper<DataDomain, 
                                     name = it.name,
                                     description = it.description,
                                     resourceLink = it.resourceLink,
-                                    thumbnailRemote = it.thumbnailRemote.run {
-                                        ThumbnailPresentation(
-                                                pathImage = pathImage,
+                                    heroImageUrl = it.thumbnailRemote.run {
+                                        HeroImageUrl(
+                                                pathUrl = pathImage,
                                                 extensionImage = extensionImage
                                         )
                                     }

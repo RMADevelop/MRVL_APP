@@ -9,10 +9,27 @@ data class HeroPresentation(
         var name: String,
         val description: String,
         val resourceLink: String,
-        val thumbnailRemote: ThumbnailPresentation
+        val heroImageUrl: HeroImageUrl
 )
 
-data class ThumbnailPresentation(
-        val pathImage: String,
-        val extensionImage: String
-)
+class HeroImageUrl(
+        private val pathUrl: String,
+        private val extensionImage: String,
+        private val imageParam: ImageParam = ImageParam.PORTRAIT
+) {
+    companion object {
+        private const val PORTRAINT_PATH = "/portrait_large."
+        private const val STANDART_PATH = "/standart_large."
+    }
+
+    enum class ImageParam {
+        PORTRAIT,
+        STANDART;
+    }
+
+    fun url() =
+            when (imageParam) {
+                ImageParam.PORTRAIT -> pathUrl + PORTRAINT_PATH + extensionImage
+                ImageParam.STANDART -> pathUrl + STANDART_PATH + extensionImage
+            }
+}
