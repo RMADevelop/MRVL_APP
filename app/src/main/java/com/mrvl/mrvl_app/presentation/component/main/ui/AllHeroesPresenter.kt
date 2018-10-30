@@ -1,6 +1,5 @@
 package com.mrvl.mrvl_app.presentation.component.main.ui
 
-import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.mrvl.mrvl_app.core.di.qualifier.IoThread
 import com.mrvl.mrvl_app.core.di.qualifier.UiThread
@@ -20,13 +19,14 @@ class AllHeroesPresenter @Inject constructor(
         private var heroMapper: Mapper<DataDomain, DataPresentation>
 ) : BasePresenter<AllHeroesView>() {
 
+    private var isGrid: Boolean = true
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         loadMore()
     }
 
     fun loadMore() {
-        Log.d("iokhjnb", "sddfdjsfg")
         allHeroInteractor.getAllHero()
                 .map {
                     heroMapper.transform(it.dataRemote)
@@ -40,5 +40,10 @@ class AllHeroesPresenter @Inject constructor(
                     viewState.loadError()
                     it.printStackTrace()
                 })
+    }
+
+    fun changeButtonClicked() {
+        isGrid = !isGrid
+        viewState.changeListSpan(isGrid)
     }
 }

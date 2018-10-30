@@ -10,4 +10,6 @@
     <color name="gradientRedDark">#7C0C00</color>
     <color name="gradientRedMedium">#8E0F00</color>
     <color name="gradientRedLight">#B71200</color>
+
+    <color name="redMediumTransparent">#bb8E0F00</color>
 </resources>

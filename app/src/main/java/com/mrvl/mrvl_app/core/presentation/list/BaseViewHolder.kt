@@ -23,7 +23,6 @@ abstract class ClickableViewHolder<Item>(
     }
 }
 
-
 interface Clickable<Item> {
     var itemClick: (item: Item) -> Unit
 }

@@ -6,6 +6,7 @@ import com.mrvl.mrvl_app.app.App
 import com.mrvl.mrvl_app.core.di.ExecutorModule
 import com.mrvl.mrvl_app.core.di.NavigationModule
 import com.mrvl.mrvl_app.core.di.NetworkModule
+import com.mrvl.mrvl_app.data.core.ImageLoader
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -41,4 +42,6 @@ class AppModule {
     @Provides
     @Singleton
     fun provideContext(application: Application): Context = application.baseContext
+
+
 }

@@ -70,7 +70,6 @@ class MainActivity : BaseActivity(), MainView, SplashListener {
     }
 
     override fun splashShowed() {
-        Log.d("ldsfsd","showed")
         bottom_navigation_view.visibility = View.VISIBLE
     }
 }

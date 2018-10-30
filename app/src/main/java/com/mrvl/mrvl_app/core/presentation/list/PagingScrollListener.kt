@@ -6,11 +6,15 @@ import android.util.Log
 
 class PagingScrollListener(
         private val loadMore: () -> Unit,
-        private val isLoading: () -> Boolean
+        private val isLoading: () -> Boolean,
+        private val canScroll: (scrollVertically: Boolean) -> Unit
 ) : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
+
+        canScroll(recyclerView.canScrollVertically(-1))
+
         (recyclerView.layoutManager as LinearLayoutManager).run {
             val visibleItemCount = childCount
             val totalItemCount = itemCount
